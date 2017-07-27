@@ -36,7 +36,7 @@
 		DistrictSelectorView<RegionModel> selectView = new DistrictSelectorView(this);
 		/**自定义返回键图片*/
 		selectView.setBackImage(R.drawable.back)
-			      /**自定义取消键文字*/
+	          /**自定义取消键文字*/
                   .setCancelText("退出")
                   /**自定义背景样式*/
                   .setBackGroundStyle(R.drawable.radis)
@@ -53,9 +53,9 @@
                   /**设置数据并显示*/
                   .show(data);
 
-    			/**监听接口*/
-     			new DistrictSelectorView.RegionListener() {
-     				  /**此方法用户来更新DistrictSelectorView数据源*/
+    		/**监听接口*/
+     		new DistrictSelectorView.RegionListener() {
+     		      /**此方法用户来更新DistrictSelectorView数据源*/
                       @Override
                       public void setPickData(BaseRagionModel previousData) {
                           ArrayList<RegionModel> data = new ArrayList<>();
