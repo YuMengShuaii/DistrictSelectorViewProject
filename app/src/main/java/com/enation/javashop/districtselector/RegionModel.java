@@ -28,7 +28,6 @@ public class RegionModel implements BaseRagionModel {
         return type;
     }
 
-    @Override
     public int getRegionId() {
         return id;
     }

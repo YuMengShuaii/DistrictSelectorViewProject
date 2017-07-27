@@ -10,5 +10,4 @@ public interface BaseRagionModel {
     String getPickerName();
     @RegionType.Type
     int getType();
-    int  getRegionId();
 }

@@ -3,6 +3,8 @@ package com.enation.javashop.districtselectorview.widget;
 import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.StyleRes;
+import android.support.annotation.StyleableRes;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
@@ -20,7 +22,8 @@ import com.enation.javashop.districtselectorview.model.BaseRagionModel;
 import java.util.ArrayList;
 
 /**
- * Created by LDD on 17/3/3.
+ * 地区选择器
+ * @param <T> 数据Model泛型
  */
 
 public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
@@ -94,7 +97,7 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
      * @param context       上下文
      * @param themeResId    styleId
      */
-    public DistrictSelectorView(Context context, int themeResId) {
+    public DistrictSelectorView(Context context,@StyleRes int themeResId) {
         super(context, themeResId);
         init();
     }
@@ -134,7 +137,7 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
      * @param Rid 资源ID
      * @return this
      */
-    public DistrictSelectorView setCancelStyle(int Rid){
+    public DistrictSelectorView setCancelStyle(@DrawableRes int Rid){
         cancel.setBackgroundResource(Rid);
         return this;
     }
@@ -144,7 +147,7 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
      * @param Rid 资源ID
      * @return this
      */
-    public DistrictSelectorView setConfrimStyle(int Rid){
+    public DistrictSelectorView setConfrimStyle(@DrawableRes int Rid){
         confirm.setBackgroundResource(Rid);
         return this;
     }
@@ -154,7 +157,7 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
      * @param Rid 资源ID
      * @return this
      */
-    public DistrictSelectorView setBackImage(int Rid){
+    public DistrictSelectorView setBackImage(@DrawableRes int Rid){
         back.setImageResource(Rid);
         return this;
     }
