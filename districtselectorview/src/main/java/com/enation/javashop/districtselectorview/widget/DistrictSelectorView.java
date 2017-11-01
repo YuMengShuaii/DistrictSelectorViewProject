@@ -44,19 +44,14 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
     private LinearLayout topBar;
 
     /**
-     * 取消按钮
-     */
-    private Button  cancel;
-
-    /**
      * 确认按钮
      */
-    private Button  confirm;
+    private TextView  confirm;
 
     /**
      * 后退按钮
      */
-    private ImageView back;
+    private TextView back;
 
     /**
      * 地址选择提示
@@ -133,16 +128,6 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
     }
 
     /**
-     * 设置取消按钮样式
-     * @param Rid 资源ID
-     * @return this
-     */
-    public DistrictSelectorView setCancelStyle(@DrawableRes int Rid){
-        cancel.setBackgroundResource(Rid);
-        return this;
-    }
-
-    /**
      * 设置确认按钮样式
      * @param Rid 资源ID
      * @return this
@@ -157,18 +142,13 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
      * @param Rid 资源ID
      * @return this
      */
-    public DistrictSelectorView setBackImage(@DrawableRes int Rid){
-        back.setImageResource(Rid);
+    public DistrictSelectorView setBackStyle(@DrawableRes int Rid){
+        back.setBackgroundResource(Rid);
         return this;
     }
 
-    /**
-     * 设置取消按钮文字
-     * @param text 文字
-     * @return this
-     */
-    public DistrictSelectorView setCancelText(String text){
-        cancel.setText(text);
+    public DistrictSelectorView setBackText(String text){
+        back.setText(text);
         return this;
     }
 
@@ -213,10 +193,10 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) backView.getLayoutParams();
 
         /**修改宽度为屏幕宽度的0.66倍*/
-        layoutParams.width = (int) (Utils.getScreenWidth(getContext())/1.5);
+        layoutParams.width = (int) (Utils.getScreenWidth(getContext())*0.7);
 
         /**修改高度为屏幕高度的0.66倍*/
-        layoutParams.height = (int) (Utils.getScreenHeight(getContext())/1.5);
+        layoutParams.height = (int) (Utils.getScreenHeight(getContext())*0.6);
 
         /**设置回layout信息*/
         backView.setLayoutParams(layoutParams);
@@ -226,9 +206,8 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
 
         /**初始化控件*/
         hint = (TextView) parent.findViewById(R.id.hint);
-        cancel = (Button) parent.findViewById(R.id.cancel);
-        confirm = (Button) parent.findViewById(R.id.confirm);
-        back = (ImageView) parent.findViewById(R.id.back);
+        confirm = (TextView) parent.findViewById(R.id.confirm);
+        back = (TextView) parent.findViewById(R.id.back);
         topBar = (LinearLayout) parent.findViewById(R.id.topbar);
         final ListView listView = (ListView) parent.findViewById(R.id.citylist);
 
@@ -242,15 +221,6 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
 
         /**设置适配器*/
         listView.setAdapter(adapter);
-
-        /**设置返回事件*/
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-
         /**设置确认事件*/
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -308,6 +278,12 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
      * 设置提示信息
      */
     private void initHint(){
+
+        if (bean1 == null && bean2 == null && bean3 == null && bean4 ==null){
+            hint.setText("当前未选择");
+            return;
+        }
+
         hint.setText(bean1==null?"":bean1.getPickerName()
                 +" "+(bean2==null?"":bean2.getPickerName())
                 +" "+(bean3==null?"":bean3.getPickerName())

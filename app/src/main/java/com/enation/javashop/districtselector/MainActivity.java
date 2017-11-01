@@ -23,14 +23,7 @@ public class MainActivity extends AppCompatActivity implements DistrictSelectorV
         }
         final DistrictSelectorView<RegionModel> selectView = new DistrictSelectorView(this);
 
-        selectView.setBackImage(R.drawable.back)
-                  .setCancelText("退出")
-                  .setBackGroundStyle(R.drawable.radis)
-                  .setConfirmText("确定")
-                  .setCancelStyle(R.drawable.dialog_left_radis)
-                  .setConfrimStyle(R.drawable.dialog_radis)
-                  .setTopBarStyle(R.drawable.dialog_left_radis)
-                  .setRegionListener(new DistrictSelectorView.RegionListener() {
+        selectView.setRegionListener(new DistrictSelectorView.RegionListener() {
                       @Override
                       public void setPickData(BaseRagionModel previousData) {
                           ArrayList<RegionModel> data = new ArrayList<>();
