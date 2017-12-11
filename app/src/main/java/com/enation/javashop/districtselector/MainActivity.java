@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity implements DistrictSelectorV
         for (int i = 0; i < 20; i++) {
             data.add(new RegionModel("北京"+i,1, RegionType.First));
         }
-        final DistrictSelectorView<RegionModel> selectView = new DistrictSelectorView(this);
 
+        final DistrictSelectorView<RegionModel> selectView = new DistrictSelectorView(this);
         selectView.setRegionListener(new DistrictSelectorView.RegionListener() {
                       @Override
                       public void setPickData(BaseRagionModel previousData) {
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements DistrictSelectorV
 
                       }
                   })
-                  .show(data);
+                  .show();
 
 //        selectView.setRegionListener(new DistrictSelectorView.RegionListener<RegionModel>() {
 //            @Override

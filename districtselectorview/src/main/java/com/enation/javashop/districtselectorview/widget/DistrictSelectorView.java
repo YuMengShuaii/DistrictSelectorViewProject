@@ -172,6 +172,7 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
         if (data!=null&&data.size()>0&&adapter!=null){
                 dataSouce=data;
                 adapter.setData(dataSouce);
+                adapter.notifyDataSetChanged();
         }
         return this;
     }
@@ -336,6 +337,21 @@ public class DistrictSelectorView<T extends BaseRagionModel>  extends Dialog {
             initHint();
             dataSouce = data;
             adapter.setData(dataSouce);
+            super.show();
+            ScaleAnimation sAnima = new ScaleAnimation(0, 1, 0, 1, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f );//横向放大5倍，纵向放大5倍
+            sAnima.setDuration(500);
+            parent.startAnimation(sAnima);
+        }else{
+            Utils.toastL(getContext(),"DistrictSelectorView配置出错，请检查参数！");
+        }
+    }
+
+    public void show(){
+
+        if (!(isShowing())&&adapter!=null){
+            initResutData(4);
+            initHint();
+            listener.setPickData(null);
             super.show();
             ScaleAnimation sAnima = new ScaleAnimation(0, 1, 0, 1, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f );//横向放大5倍，纵向放大5倍
             sAnima.setDuration(500);
